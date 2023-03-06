@@ -20,6 +20,35 @@
         {
             display: flex;
         }
+        .aycard
+        {
+            border: 3px solid white;
+            transition:0.3s;
+        }
+        .aycard:hover
+        {
+            border: 3px solid rgb(81, 136, 255);
+        }
+        .div-link
+        {
+            text-decoration: none;
+            color: black;
+        }
+        .div-link:hover
+        {
+            color: black;
+        }
+        .scrollable-hr
+        {
+            white-space: nowrap; /* Prevent the text from wrapping */
+            overflow-x: auto; /* Set overflow-x to auto to make the div horizontally scrollable */
+        }
+        .break-text
+        {
+            inline-size: 150px;
+            overflow-wrap: break-word;
+        }
+
     </style>
 </head>
 <body>
@@ -125,17 +154,19 @@
             <h5>Completed Builds</h5>
             <hr>
             <div class="diplay-flex">
-                <div class="w-25 p-1 thumb-post">
-                    <div class="w-100 py-1 px-2 text-light bg-dark">
-                        <i></i> CWalkerz
+                <a class="div-link" href="">
+                    <div class="w-25 p-1 thumb-post aycard">
+                        <div class="w-100 py-1 px-2 text-light bg-dark">
+                            <i></i> CWalkerz
+                        </div>
+                        <img src="https://cdna.pcpartpicker.com/static/forever/images/userbuild/423767.2436a2cc9aaa5d082d718a4433d20c77.512.jpg" alt="" class="w-100">
+                        <div class="card-body pt-2 px-2">
+                            <b>My first build</b>
+                            <br><br>
+                            <p class="secondary" style="font-size: 14px;">AMD Ryzen 5 5600X Radeon RX 6700 XT</p>
+                        </div>
                     </div>
-                    <img src="https://cdna.pcpartpicker.com/static/forever/images/userbuild/423767.2436a2cc9aaa5d082d718a4433d20c77.512.jpg" alt="" class="thumbnail w-100">
-                    <div class="card-body pt-2 px-2">
-                        <b>My first build</b>
-                        <br><br>
-                        <p class="secondary" style="font-size: 14px;">AMD Ryzen 5 5600X Radeon RX 6700 XT</p>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
