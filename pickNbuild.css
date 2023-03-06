@@ -90,3 +90,12 @@ div.dropdown-menu
 {
     border: 3px solid rgb(81, 136, 255);
 }
+.div-link
+{
+    text-decoration: none;
+    color: black;
+}
+.div-link:hover
+{
+    color: black;
+}
