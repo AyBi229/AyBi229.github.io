@@ -99,3 +99,13 @@ div.dropdown-menu
 {
     color: black;
 }
+.scrollable-hr
+{
+    white-space: nowrap; /* Prevent the text from wrapping */
+    overflow-x: auto; /* Set overflow-x to auto to make the div horizontally scrollable */
+}
+.break-text
+{
+    inline-size: 150px;
+    overflow-wrap: break-word;
+}
