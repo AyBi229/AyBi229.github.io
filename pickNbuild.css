@@ -77,3 +77,16 @@ div.dropdown-menu
 {
     display: flex;
 }
+.text-right
+{
+    margin-left: auto;
+}
+.aycard
+{
+    border: 3px solid white;
+    transition:0.3s;
+}
+.aycard:hover
+{
+    border: 3px solid rgb(81, 136, 255);
+}
