@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pick&Build</title>
+    <link rel="shortcut icon" href="pc.svg" type="image/x-icon">
     <link rel="stylesheet" href="pickNbuild.css">
     <script src="jquery-3.6.3.min.js"></script>
     <script src="pickNbuild.js"></script>
@@ -53,6 +54,10 @@
         {
             background-color: rgb(225, 225, 225);
         }
+        @media screen and (max-width: 750px)  {
+  aside { display: none; }
+  article { width: 100%; }
+} 
     </style>
 </head>
 <body>
@@ -100,69 +105,16 @@
             </ul>
         </div>
     </nav>
-    <div class="display-flex special-white">
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-              <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-              <span class="fs-4">Sidebar</span>
-            </a>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-              <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                  Dashboard
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-                  Orders
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                  Products
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                  Customers
-                </a>
-              </li>
-            </ul>
-            <hr>
-            <div class="dropdown">
-              <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                <strong>mdo</strong>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-              </ul>
-            </div>
-        </div>
-        <div class="m-2 p-2 w-100">
+    <div class="special-white">
+        <div class="p-2 container">
             <h5>Completed Builds</h5>
             <hr>
-            <div class="diplay-flex py-2">
+            <div class="diplay-flex py-2 row">
                 <div class="w-25 m-3 p-1 aycard">
                     <a class="div-link" href="">
                         <div class="">
                             <div class="w-100 py-1 px-2 text-light bg-dark">
-                                <i></i> CWalkerz
+                                <i class="blue bi bi-tools"></i> CWalkerz
                             </div>
                             <img src="https://cdna.pcpartpicker.com/static/forever/images/userbuild/423767.2436a2cc9aaa5d082d718a4433d20c77.512.jpg" alt="" class="w-100">
                             <div class="card-body pt-2 px-2">
@@ -177,7 +129,22 @@
                     <a class="div-link" href="">
                         <div class="">
                             <div class="w-100 py-1 px-2 text-light bg-dark">
-                                <i></i> CWalkerz
+                                <i class="blue bi bi-tools"></i> CWalkerz
+                            </div>
+                            <img src="https://cdna.pcpartpicker.com/static/forever/images/userbuild/423766.8e6a7c2da8b9b0bcb4550f8f5e5b4a93.512.jpg" alt="" class="w-100">
+                            <div class="card-body pt-2 px-2">
+                                <b>My first build</b>
+                                <br><br>
+                                <p class="secondary" style="font-size: 14px;">AMD Ryzen 5 5600X Radeon RX 6700 XT</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="w-25 m-3 p-1 aycard">
+                    <a class="div-link" href="">
+                        <div class="">
+                            <div class="w-100 py-1 px-2 text-light bg-dark">
+                                <i class="blue bi bi-tools"></i> CWalkerz
                             </div>
                             <img src="https://cdna.pcpartpicker.com/static/forever/images/userbuild/423767.2436a2cc9aaa5d082d718a4433d20c77.512.jpg" alt="" class="w-100">
                             <div class="card-body pt-2 px-2">
@@ -192,22 +159,7 @@
                     <a class="div-link" href="">
                         <div class="">
                             <div class="w-100 py-1 px-2 text-light bg-dark">
-                                <i></i> CWalkerz
-                            </div>
-                            <img src="https://cdna.pcpartpicker.com/static/forever/images/userbuild/423767.2436a2cc9aaa5d082d718a4433d20c77.512.jpg" alt="" class="w-100">
-                            <div class="card-body pt-2 px-2">
-                                <b>My first build</b>
-                                <br><br>
-                                <p class="secondary" style="font-size: 14px;">AMD Ryzen 5 5600X Radeon RX 6700 XT</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="w-25 m-3 p-1 aycard">
-                    <a class="div-link" href="">
-                        <div class="">
-                            <div class="w-100 py-1 px-2 text-light bg-dark">
-                                <i></i> CWalkerz
+                                <i class="blue bi bi-tools"></i> CWalkerz
                             </div>
                             <img src="https://cdna.pcpartpicker.com/static/forever/images/userbuild/423767.2436a2cc9aaa5d082d718a4433d20c77.512.jpg" alt="" class="w-100">
                             <div class="card-body pt-2 px-2">
