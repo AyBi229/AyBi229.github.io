@@ -106,11 +106,11 @@
         <h5 class="text-center">Headphones</h5><hr><br>
         <div class="row">
             <div class="col-sm-4">
-                <div class="card hover-effect">
+                <div class="card hover-effect product">
                     <img src="https://m.media-amazon.com/images/I/516VqE7tuqL.jpg" class="card-img-top " 
                     alt="" />
                     <div class="card-body">
-                        <h5 class="card-title text-primary">HiFiMAN Susvara Headphones</h5><br>
+                        <h5 class="card-title text-primary item-name">HiFiMAN Susvara Headphones</h5><br>
                         <p class="card-text text-success">
                             6000$
                         </p>
@@ -203,12 +203,12 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="card hover-effect">
+                <div class="card hover-effect product">
                     <img src="https://cdna.pcpartpicker.com/static/forever/images/product/614f3f2375ec5c13f691e5176fb4c9d9.1600.jpg" class="card-img-top"
                     alt="" />
                     <div class="card-body">
-                        <h5 class="card-title text-primary">Corsair Virtuoso RGB 7.1 Channel Headset</h5>
-                        <p class="card-text text-success">$149.99
+                        <h5 class="card-title text-primary product">Corsair Virtuoso RGB 7.1 Channel Headset</h5>
+                        <p class="card-text text-success product">$149.99
                         </p>
                         <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
                     </div>
@@ -230,8 +230,9 @@
     </div>
     <div class="container cards my-cart">
         <div style="width: 40%;" class="m-5">
-            <h4>ITEM</h4>
+            <h4 class="item">ITEM</h4>
             <hr>
+            <span class="item-name"></span>
             <div class="my-3 cards">
                 <div>
                     <img class="w-100" src="" alt="">
@@ -248,7 +249,13 @@
                 <p class="text-secondary"></p>
             </div>
         </div>
-        <div style="width: 40%;" class=""></div>
+        <div style="width: 40%;" class="m-5">
+            <h4>QUANTITY</h4>
+            <hr>
+            <div class="my-3 cards">
+                <p class="text-secondary"></p>
+            </div>
+        </div>
     </div>
         <!-- Footer -->
 <footer class="text-center text-lg-start bg-dark text-muted">
@@ -373,6 +380,11 @@
   </footer>
   <!-- Footer -->
     <script>
+        $(document).ready(function(){
+            $(".btn-primary").click(function(){
+                $(".item-name").text('hello')
+            })
+        })
     </script>
 </body>
 </html>
