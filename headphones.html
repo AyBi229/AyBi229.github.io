@@ -210,7 +210,7 @@
                         <h5 class="card-title text-primary product">Corsair Virtuoso RGB 7.1 Channel Headset</h5>
                         <p class="card-text text-success product">$149.99
                         </p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -370,23 +370,31 @@
   <!-- Footer -->
     <script>
         $(document).ready(function(){
-      $(".btn-primary").click(function(){
-        let item_name = $(this).siblings('h5.card-title').html();
-        let item_price = $(this).siblings('p.card-text').html();
-        $("tbody").append("<tr><td class='name'>" + item_name + "</td><td class='price'>" + item_price + "</td><td><input type='number' class='item-quantity'></td></tr>");
-        $(".item-quantity").css("width", "40px");
-        $('input[type="number"]').on('input', function() {
-          if ($(this).val() <= 1) {
-            $(this).val('1');
-          }
+            $(".btn-primary").click(function(){
+                let item_name = $(this).siblings('h5.card-title').html();
+                let item_price = $(this).siblings('p.card-text').html();
+                $("tbody").append("<tr><td class='name'>" + item_name + "</td><td class='price'>" + item_price + "</td><td><input type='number' class='item-quantity'></td></tr>");
+                $(".item-quantity").css("width", "40px");
+                $('input[type="number"]').on('input', function() {
+                    if ($(this).val() <= 1) {
+                        $(this).val(1);
+                    }
+                });
+                var prices = 0;
+                $("tbody tr td.price").each(function(){
+                    let price = Number($(this).html().replace('$',''));
+                    $("input.item-quantity").each(function(){
+                        let quantity = $(this).val()
+                        prices += price * quantity;
+                        $("p.total-price").text('$' + prices);
+                    });
+                });
+                /*$("input.item-quantity").each(function(){
+                    let price = $("tbody tr td.price").html()
+                    $("p.para").text($(this).val() * Number(price));
+                })*/
+            });
         });
-        let prices = 0;
-        $("tbody tr td.price").each(function(){
-          prices += Number($(this).html().replace('$',''))
-          $("p.total-price").text('$' + prices);
-        });
-      });
-    });
     </script>
 </body>
 </html>
