@@ -114,7 +114,7 @@
                         <p class="card-text text-success">
                             6000$
                         </p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -127,7 +127,7 @@
                         <p class="card-text text-success">
                             94.99$
                         </p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -138,7 +138,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-primary">Razer BlackShark V2 X 7.1 Channel Headset</h5><br><br><br>
                         <p class="card-text text-success">49.99$</p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -155,7 +155,7 @@
                         <p class="card-text text-success">
                             $82.65
                         </p><br>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -168,7 +168,7 @@
                         <p class="card-text text-success">
                             $349.99
                         </p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -179,7 +179,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-primary">Beyerdynamic DT 770 PRO Headphones</h5>
                         <p class="card-text text-success">$159.00</p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -198,7 +198,7 @@
                         <p class="card-text text-success">
                             $119.99
                         </p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -221,40 +221,29 @@
                     <div class="card-body"><br>
                         <h5 class="card-title text-primary">Corsair VOID RGB ELITE 7.1 Channel Headset</h5><br><br><br>
                         <p class="card-text text-success">$89.99</p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
         </div>
         <br>
     </div>
-    <div class="container cards my-cart">
-        <div style="width: 40%;" class="m-5">
-            <h4 class="item">ITEM</h4>
-            <hr>
-            <span class="item-name"></span>
-            <div class="my-3 cards">
-                <div>
-                    <img class="w-100" src="" alt="">
-                </div>
-                <div>
-                    <p class="text-secondary"></p>
-                </div>
-            </div>
-        </div>
-        <div style="width: 20%;" class="m-5">
-            <h4>PRICE</h4>
-            <hr>
-            <div class="my-3 cards">
-                <p class="text-secondary"></p>
-            </div>
-        </div>
-        <div style="width: 40%;" class="m-5">
-            <h4>QUANTITY</h4>
-            <hr>
-            <div class="my-3 cards">
-                <p class="text-secondary"></p>
-            </div>
+    <div class="container mt-5">
+        <h4 class="text-center"><i class="bi bi-cart-fill"></i> MY CART</h4>
+        <table class="table table-striped text-center">
+          <thead>
+            <tr>
+              <th>ITEM</th>
+              <th>PRICE</th>
+              <th>QUANTITY</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <div class="text-center">
+          <h4>Total :</h4>
+          <p class="total-price"></p>
         </div>
     </div>
         <!-- Footer -->
@@ -381,10 +370,23 @@
   <!-- Footer -->
     <script>
         $(document).ready(function(){
-            $(".btn-primary, .card-item").click(function(){
-                $(".item-name").text('hello')
-            })
-        })
+      $(".btn-primary").click(function(){
+        let item_name = $(this).siblings('h5.card-title').html();
+        let item_price = $(this).siblings('p.card-text').html();
+        $("tbody").append("<tr><td class='name'>" + item_name + "</td><td class='price'>" + item_price + "</td><td><input type='number' class='item-quantity'></td></tr>");
+        $(".item-quantity").css("width", "40px");
+        $('input[type="number"]').on('input', function() {
+          if ($(this).val() <= 1) {
+            $(this).val('1');
+          }
+        });
+        let prices = 0;
+        $("tbody tr td.price").each(function(){
+          prices += Number($(this).html().replace('$',''))
+          $("p.total-price").text('$' + prices);
+        });
+      });
+    });
     </script>
 </body>
 </html>
