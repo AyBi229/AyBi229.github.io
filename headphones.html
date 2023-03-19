@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>game | Builder</title>
+    <title>Pick&Build | Headphones</title>
     <link rel="shortcut icon" type="image/jpg" href="wrench-adjustable.svg"/>
     <link rel="stylesheet" href="pickNbuild.css">
     <script src="jquery-3.6.3.min.js"></script>
@@ -80,7 +80,7 @@
                 </li>
                 <div class="vr text-dark"></div>
                 <li class="nav-item">
-                    <a class="link2" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pc" viewBox="0 0 16 16">
+                    <a class="link2" href="Completed Builds.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pc" viewBox="0 0 16 16">
                         <path d="M5 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H5Zm.5 14a.5.5 0 1 1 0 1 .5.5 0 0 1 0-1Zm2 0a.5.5 0 1 1 0 1 .5.5 0 0 1 0-1ZM5 1.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5ZM5.5 3h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1Z"/>
                       </svg> Completed Builds</a>
                 </li>
@@ -114,7 +114,7 @@
                         <p class="card-text text-success">
                             6000$
                         </p>
-                        <button href="" class="btn btn-primary w-100 m-1">ADD TO CART</button>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -127,7 +127,7 @@
                         <p class="card-text text-success">
                             94.99$
                         </p>
-                        <button href="" class="btn btn-primary w-100 m-1">ADD TO CART</button>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -138,7 +138,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-primary">Razer BlackShark V2 X 7.1 Channel Headset</h5><br><br><br>
                         <p class="card-text text-success">49.99$</p>
-                        <button href="" class="btn btn-primary w-100 m-1">ADD TO CART</button>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -155,7 +155,7 @@
                         <p class="card-text text-success">
                             $82.65
                         </p><br>
-                        <button href="" class="btn btn-primary w-100 m-1">ADD TO CART</button>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -168,7 +168,7 @@
                         <p class="card-text text-success">
                             $349.99
                         </p>
-                        <button href="" class="btn btn-primary w-100 m-1">ADD TO CART</button>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -179,7 +179,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-primary">Beyerdynamic DT 770 PRO Headphones</h5>
                         <p class="card-text text-success">$159.00</p>
-                        <button href="" class="btn btn-primary w-100 m-1">ADD TO CART</button>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -198,7 +198,7 @@
                         <p class="card-text text-success">
                             $119.99
                         </p>
-                        <button href="" class="btn btn-primary w-100 m-1">ADD TO CART</button>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -210,7 +210,7 @@
                         <h5 class="card-title text-primary product">Corsair Virtuoso RGB 7.1 Channel Headset</h5>
                         <p class="card-text text-success product">$149.99
                         </p>
-                        <button href="" class="btn btn-primary w-100 m-1">ADD TO CART</button>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -221,7 +221,7 @@
                     <div class="card-body"><br>
                         <h5 class="card-title text-primary">Corsair VOID RGB ELITE 7.1 Channel Headset</h5><br><br><br>
                         <p class="card-text text-success">$89.99</p>
-                        <button href="" class="btn btn-primary w-100 m-1">ADD TO CART</button>
+                        <button class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -241,9 +241,10 @@
           <tbody>
           </tbody>
         </table>
-        <div class="text-center">
+        <div class="text-center mb-3">
           <h4>Total :</h4>
-          <p class="total-price"></p>
+          <p class="total-price text-success"></p>
+            <button id="getTotalPrice" class="btn btn-success">Get Total Price</button>
         </div>
     </div>
         <!-- Footer -->
@@ -370,7 +371,7 @@
   <!-- Footer -->
     <script>
         $(document).ready(function(){
-            $(".btn-primary").click(function(){
+            $("button.addToCart").click(function(){
                 let item_name = $(this).siblings('h5.card-title').html();
                 let item_price = $(this).siblings('p.card-text').html();
                 $("tbody").append("<tr><td class='name'>" + item_name + "</td><td class='price'>" + item_price + "</td><td><input type='number' class='item-quantity'></td></tr>");
@@ -380,19 +381,16 @@
                         $(this).val(1);
                     }
                 });
-                var prices = 0;
-                $("tbody tr td.price").each(function(){
-                    let price = Number($(this).html().replace('$',''));
-                    $("input.item-quantity").each(function(){
-                        let quantity = $(this).val()
-                        prices += price * quantity;
-                        $("p.total-price").text('$' + prices);
+                $("button#getTotalPrice").click(function(){
+                    let prices = 0;
+                    $("tbody tr td.price").each(function(){
+                        //price
+                        let quant = $(this).next().children("input.item-quantity").val();
+                        prices += Number($(this).html().replace('$','')) * quant;
+                        //total price
+                        $("p.total-price").text('$' + prices.toFixed(2));
                     });
-                });
-                /*$("input.item-quantity").each(function(){
-                    let price = $("tbody tr td.price").html()
-                    $("p.para").text($(this).val() * Number(price));
-                })*/
+                })
             });
         });
     </script>
