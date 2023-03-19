@@ -114,7 +114,7 @@
                         <p class="card-text text-success">
                             $36.99
                         </p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -127,7 +127,7 @@
                         <p class="card-text text-success">
                             $99.99
                         </p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -138,7 +138,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-primary">Razer Huntsman Mini</h5><br><br><br>
                         <p class="card-text text-success">$89.99</p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -155,7 +155,7 @@
                         <p class="card-text text-success">
                             $769.95
                         </p><br>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -168,7 +168,7 @@
                         <p class="card-text text-success">
                             $8.99
                         </p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -179,7 +179,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-primary">Logitech G915 Lightspeed RGB Wireless Gaming Keyboard</h5>
                         <p class="card-text text-success">$215.99</p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -198,7 +198,7 @@
                         <p class="card-text text-success">
                             $103.99
                         </p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -210,7 +210,7 @@
                         <h5 class="card-title text-primary">Corsair K70 RGB MK.2 Wired Gaming Keyboard</h5>
                         <p class="card-text text-success">	$159.94
                         </p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -221,12 +221,31 @@
                     <div class="card-body"><br>
                         <h5 class="card-title text-primary">SteelSeries Apex Pro TKL RGB Wired Gaming Keyboard</h5><br><br><br>
                         <p class="card-text text-success">$119.99</p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
         </div>
         <br>
+    </div>
+    <div class="container mt-5">
+        <h4 class="text-center"><i class="bi bi-cart-fill"></i> MY CART</h4>
+        <table class="table table-striped text-center">
+          <thead>
+            <tr>
+              <th>ITEM</th>
+              <th>PRICE</th>
+              <th>QUANTITY</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <div class="text-center mb-3">
+          <h4>Total :</h4>
+          <p class="total-price text-success"></p>
+            <button id="getTotalPrice" class="btn btn-success">Get Total Price</button>
+        </div>
     </div>
         <!-- Footer -->
 <footer class="text-center text-lg-start bg-dark text-muted">
@@ -350,7 +369,30 @@
     <!-- Copyright -->
   </footer>
   <!-- Footer -->
-    <script>
-    </script>
+  <script>
+    $(document).ready(function(){
+        $("button.addToCart").click(function(){
+            let item_name = $(this).siblings('h5.card-title').html();
+            let item_price = $(this).siblings('p.card-text').html();
+            $("tbody").append("<tr><td class='name'>" + item_name + "</td><td class='price'>" + item_price + "</td><td><input type='number' class='item-quantity'></td></tr>");
+            $(".item-quantity").css("width", "40px");
+            $('input[type="number"]').on('input', function() {
+                if ($(this).val() <= 1) {
+                    $(this).val(1);
+                }
+            });
+            $("button#getTotalPrice").click(function(){
+                let prices = 0;
+                $("tbody tr td.price").each(function(){
+                    //price
+                    let quant = $(this).next().children("input.item-quantity").val();
+                    prices += Number($(this).html().replace('$','')) * quant;
+                    //total price
+                    $("p.total-price").text('$' + prices.toFixed(2));
+                });
+            })
+        });
+    });
+</script>
 </body>
 </html>
