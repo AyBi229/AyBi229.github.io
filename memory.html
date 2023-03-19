@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory | Builder</title>
+    <link rel="shortcut icon" type="image/jpg" href="memory.html"/>
+    <link rel="stylesheet" href="pickNbuild.css">
+    <script src="jquery-3.6.3.min.js"></script>
+    <script src="pickNbuild.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <style>
+        .cards
+        {
+            display: flex;
+        }
+        .scrollable
+        {
+            white-space: nowrap; /* prevent content from wrapping */
+        }
+        .hover-effect-component
+        {
+            transition: 0.3s;
+            border: 1px solid white;
+        }
+        .hover-effect-component:hover
+        {
+            color: rgb(36, 105, 255);
+            border: 1px solid rgb(36, 105, 255);
+        }
+        @media screen and (max-width: px)
+        {
+            .scrollable
+            {
+                overflow-x: auto; /* enable horizontal scrolling */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-expand-sm navbar-dark bg-dark py-3">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><h3 class="nav1"><i class="blue bi bi-tools"></i> Pick&Build</h3></a>
+            <div class="d-flex">
+                <ul class="navbar-nav me-auto hstack gap-3">
+                    <li class="nav-item">
+                        <a class="link1" href="#">Log in</a>
+                    </li>
+                    <div class="vr text-light"></div>
+                    <li class="nav-item">
+                        <a class="link1" href="#">Sign in</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light sticky-top py-3">
+        <div class="container">
+            <ul class="navbar-nav m-auto hstack gap-3">
+                <li class="nav-item">
+                    <a class="link2" href="Builder.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wrench-adjustable" viewBox="0 0 16 16">
+                        <path d="M16 4.5a4.492 4.492 0 0 1-1.703 3.526L13 5l2.959-1.11c.027.2.041.403.041.61Z"/>
+                        <path d="M11.5 9c.653 0 1.273-.139 1.833-.39L12 5.5 11 3l3.826-1.53A4.5 4.5 0 0 0 7.29 6.092l-6.116 5.096a2.583 2.583 0 1 0 3.638 3.638L9.908 8.71A4.49 4.49 0 0 0 11.5 9Zm-1.292-4.361-.596.893.809-.27a.25.25 0 0 1 .287.377l-.596.893.809-.27.158.475-1.5.5a.25.25 0 0 1-.287-.376l.596-.893-.809.27a.25.25 0 0 1-.287-.377l.596-.893-.809.27-.158-.475 1.5-.5a.25.25 0 0 1 .287.376ZM3 14a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>
+                      </svg> Builder</a>
+                </li>
+                <div class="vr text-dark"></div>
+                <li class="nav-item">
+                    <a class="link2" href="buildguides.html"><i class="bi bi-text-left"></i> Build Guides</a>
+                </li>
+                <div class="vr text-dark"></div>
+                <li class="nav-item">
+                    <a class="link2" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pc" viewBox="0 0 16 16">
+                        <path d="M5 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H5Zm.5 14a.5.5 0 1 1 0 1 .5.5 0 0 1 0-1Zm2 0a.5.5 0 1 1 0 1 .5.5 0 0 1 0-1ZM5 1.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5ZM5.5 3h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1Z"/>
+                      </svg> Completed Builds</a>
+                </li>
+                <div class="vr text-dark"></div>
+                <li class="nav-item dropdown">
+                    <a class="link2 dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-cpu"></i> Browse Products</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="headphones.html">Headphones</a></li>
+                        <li><a class="dropdown-item" href="keyboards.html">Keyboards</a></li>
+                        <li><a class="dropdown-item" href="mouse.html">Mice</a></li>
+                        <li><a class="dropdown-item" href="speakers.html">Speakers</a></li>
+                        <li><a class="dropdown-item" href="webcams.html">Webcams</a></li>
+                        <li><a class="dropdown-item" href="monitors.html">Monitors</a></li>
+                      </ul>
+                </li>
+                
+            </ul>
+            </div>
+        </div>
+    </nav>
+    <div class=" container pt-5">
+        <p class="text-center"><b>Need a helping hand?</b> Jump-start your build with one of these configurations</p><br>
+        <h5 class="text-center">CHOOSE A MEMORY</h5><hr><br>
+        <div class="row">
+            <!-- Number1 -->
+            <div class="col-sm-4">
+                <div class="card hover-effect">
+                    <img src="https://cdna.pcpartpicker.com/static/forever/images/product/835ab3efad1be13bbe53beef3e3c6f96.1600.jpg" class="card-img-top "alt="" />
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Corsair Vengeance LPX 16 GB (2 x 8 GB) DDR4-3200 CL16 Memory</h5>
+                        <p class="card-text text-success">	$44.99</p>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Number2 -->
+            <div class="col-sm-4">
+                <div class="card hover-effect">
+                    <img src="https://cdna.pcpartpicker.com/static/forever/images/product/5f09867b54e9ad932b4dd1bc767f6238.1600.jpg" class="card-img-top" alt="" />
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Corsair Vengeance RGB Pro 32 GB (2 x 16 GB) DDR4-3600 CL18 Memory</h5>
+                        <p class="card-text text-success">	$109.99</p>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Number3 -->
+            <div class="col-sm-4">
+                <div class="card hover-effect">
+                    <img src="https://cdna.pcpartpicker.com/static/forever/images/product/11742fd6eec55fde4e3ee3a79529a111.1600.jpg" class="card-img-top w-100" alt="" />
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Corsair Vengeance LPX 32 GB (2 x 16 GB) DDR4-3600 CL18 Memory</h5>
+                        <p class="card-text text-success">	$79.98</p>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" container pt-5">
+        <!-- Number4 -->
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card hover-effect">
+                    <img src="https://m.media-amazon.com/images/I/41jJSPS8W7L.jpg" class="card-img-top" alt="" />
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Corsair Vengeance 32 GB (2 x 16 GB) DDR5-5600 CL36 Memory</h5>
+                        <p class="card-text text-success">	$124.99</p>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Number5 -->
+            <div class="col-sm-4">
+                <div class="card hover-effect">
+                    <img src="https://cdna.pcpartpicker.com/static/forever/images/product/87cd8e9d02ffb0997769f4a4d5969669.1600.jpg" class="card-img-top" alt="" />
+                    <div class="card-body"><br>
+                        <h5 class="card-title text-primary">Corsair Vengeance RGB Pro 16 GB (2 x 8 GB) DDR4-3200 CL16 Memory</h5>
+                        <p class="card-text text-success">	$57.99+</p>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Number6 -->
+            <div class="col-sm-4">
+                <div class="card hover-effect">
+                    <img src="https://cdna.pcpartpicker.com/static/forever/images/product/e8d573bd2eac864d427645f0d2f7cad8.1600.jpg" class="card-img-top" alt="" />
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">G.Skill Trident Z5 RGB 32 GB (2 x 16 GB) DDR5-6000 CL36 Memory</h5>
+                        <p class="card-text text-success">	$147.99</p>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+
+    <div class=" container pt-5">
+        <!-- Number7 -->
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card hover-effect">
+                    <img src="https://cdna.pcpartpicker.com/static/forever/images/product/a462328473351f9140c87f8c1d115ffe.1600.jpg" class="card-img-top"alt="" /><br>
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Corsair Vengeance LPX 16 GB (2 x 8 GB) DDR4-3600 CL18 Memory</h5>
+                        <p class="card-text text-success">	$47.99+</p>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Number8 -->
+            <div class="col-sm-4">
+                <div class="card hover-effect">
+                    <img src="https://cdna.pcpartpicker.com/static/forever/images/product/5468241c2bc267e0ebc4ed037b0d02b6.1600.jpg" class=" class="card-img-top" alt="" />
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">G.Skill Trident Z5 RGB 32 GB (2 x 16 GB) DDR5-6400 CL32 Memory</h5>
+                        <p class="card-text text-success">	$174.99</p>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Number9 -->
+            <div class="col-sm-4">
+                <div class="card hover-effect">
+                    <img src="https://images-fe.ssl-images-amazon.com/images/I/41vOpJwT-%2BL.jpg" class="card-img-top" alt="" />
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Kingston ValueRAM 1 GB (1 x 1 GB) DDR2-667 CL5 Memory</h5>
+                        <p class="card-text text-success">	$10.62+</p>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+    <div class="container mt-5">
+        <h4 class="text-center"><i class="bi bi-cart-fill"></i> MY CART</h4>
+        <table class="table table-striped text-center">
+          <thead>
+            <tr>
+              <th>ITEM</th>
+              <th>PRICE</th>
+              <th>QUANTITY</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <div class="text-center mb-3">
+          <h4>Total :</h4>
+          <p class="total-price text-success"></p>
+            <button id="getTotalPrice" class="btn btn-success">Get Total Price</button>
+        </div>
+    </div>
+        <!-- Footer -->
+<footer class="text-center text-lg-start bg-dark text-muted">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+      <!-- Left -->
+      <div class="me-5 d-none d-lg-block">
+        <span>Get connected with us on social networks:</span>
+      </div>
+      <!-- Left -->
+  
+      <!-- Right -->
+      <div>
+        <a href="" class="me-4 socials text-reset">
+            <i class="bi bi-facebook"></i>
+        </a>
+        <a href="" class="me-4 socials text-reset">
+            <i class="bi bi-twitter"></i>
+        </a>
+        <a href="" class="me-4 socials text-reset">
+            <i class="bi bi-discord"></i>
+        </a>
+        <a href="" class="me-4 socials text-reset">
+            <i class="bi bi-instagram"></i>
+        </a>
+        <a href="" class="me-4 socials text-reset">
+            <i class="bi bi-linkedin"></i>
+        </a>
+        <a href="" class="me-4 socials text-reset">
+            <i class="bi bi-github"></i>
+        </a>
+      </div>
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+  
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold mb-4 text-light">
+              <i class="fas fa-gem me-5 "></i>Pick&Build
+            </h6>
+            <h4 style="color: rgb(116, 127, 158);">Build your own PC</h4>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4 text-light">
+              Products
+            </h6>
+            <p>
+              <a href="#!" class="text-reset">CPU</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Motherboard</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Memory</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">GPU</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Case</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Storage</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">CPU Cooler</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Operating System</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase text-light fw-bold mb-4">
+              Useful links
+            </h6>
+            <p>
+              <a href="Builder.html" class="text-reset">Builder</a>
+            </p>
+            <p>
+              <a href="buildguides.html" class="text-reset">Build Guides</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Completed Builds</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4 text-light">Contact</h6>
+            <p><i class="bi bi-house-fill"></i> El Hank, Casa, Morocco</p>
+            <p>
+                <i class="bi bi-envelope-fill"></i>
+              biroutiaya2022@gmail.com
+            </p>
+            <p><i class="bi bi-telephone-fill"></i> + 212 636 983 597</p>
+            <p><i class="bi bi-telephone-fill"></i> + 212 695 970 069</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);color: rgb(143, 142, 140);">
+        ©2023 Pick&Build, LLC. All rights reserved.
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+  <script>
+    $(document).ready(function(){
+        $("button.addToCart").click(function(){
+            let item_name = $(this).siblings('h5.card-title').html();
+            let item_price = $(this).siblings('p.card-text').html();
+            $("tbody").append("<tr><td class='name'>" + item_name + "</td><td class='price'>" + item_price + "</td><td><input type='number' class='item-quantity'></td></tr>");
+            $(".item-quantity").css("width", "40px");
+            $('input[type="number"]').on('input', function() {
+                if ($(this).val() <= 1) {
+                    $(this).val(1);
+                }
+            });
+            $("button#getTotalPrice").click(function(){
+                let prices = 0;
+                $("tbody tr td.price").each(function(){
+                    //price
+                    let quant = $(this).next().children("input.item-quantity").val();
+                    prices += Number($(this).html().replace('$','').replace('+','')) * quant;
+                    //total price
+                    $("p.total-price").text('$' + prices.toFixed(2));
+                });
+            })
+        });
+    });
+</script>
+</body>
+</html>
