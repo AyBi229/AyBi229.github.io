@@ -116,7 +116,7 @@
                         <p class="card-text text-success">
                             $309.00
                         </p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -130,7 +130,7 @@
                         <p class="card-text text-success">
                             3999.98
                         </p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -142,7 +142,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-primary">Samsung Odyssey G7 27.0" 2560 x 1440 240 Hz Curved Monitor</h5>
                         <p class="card-text text-success">$652.95</p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -160,7 +160,7 @@
                         <p class="card-text text-success">
                             $299.99
                         </p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -174,7 +174,7 @@
                         <p class="card-text text-success">
                             $89.99
                         </p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -186,7 +186,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-primary">HP X27q 27.0" 2560 x 1440 165 Hz Monitor</h5>
                         <p class="card-text text-success">	$268.95+</p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -206,7 +206,7 @@
                         <p class="card-text text-success">
                             $1449.99
                         </p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -219,7 +219,7 @@
                         <h5 class="card-title text-primary">Alienware AW3423DWF Curved Monitor</h5>
                         <p class="card-text text-success">	$1099.99+
                         </p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -231,12 +231,31 @@
                     <div class="card-body">
                         <h5 class="card-title text-primary">Sceptre E275B-QPT168 Monitor</h5>
                         <p class="card-text text-success">	$199.97+</p>
-                        <a href="" class="btn btn-primary w-100 m-1">ADD TO CART</a>
+                        <button href="" class="addToCart btn btn-primary w-100 m-1">ADD TO CART</button>
                     </div>
                 </div>
             </div>
         </div>
         <br>
+    </div>
+    <div class="container mt-5">
+        <h4 class="text-center"><i class="bi bi-cart-fill"></i> MY CART</h4>
+        <table class="table table-striped text-center">
+          <thead>
+            <tr>
+              <th>ITEM</th>
+              <th>PRICE</th>
+              <th>QUANTITY</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <div class="text-center mb-3">
+          <h4>Total :</h4>
+          <p class="total-price text-success"></p>
+            <button id="getTotalPrice" class="btn btn-success">Get Total Price</button>
+        </div>
     </div>
         <!-- Footer -->
 <footer class="text-center text-lg-start bg-dark text-muted">
@@ -360,7 +379,30 @@
     <!-- Copyright -->
   </footer>
   <!-- Footer -->
-    <script>
-    </script>
+  <script>
+    $(document).ready(function(){
+        $("button.addToCart").click(function(){
+            let item_name = $(this).siblings('h5.card-title').html();
+            let item_price = $(this).siblings('p.card-text').html();
+            $("tbody").append("<tr><td class='name'>" + item_name + "</td><td class='price'>" + item_price + "</td><td><input type='number' class='item-quantity'></td></tr>");
+            $(".item-quantity").css("width", "40px");
+            $('input[type="number"]').on('input', function() {
+                if ($(this).val() <= 1) {
+                    $(this).val(1);
+                }
+            });
+            $("button#getTotalPrice").click(function(){
+                let prices = 0;
+                $("tbody tr td.price").each(function(){
+                    //price
+                    let quant = $(this).next().children("input.item-quantity").val();
+                    prices += Number($(this).html().replace('$','').replace('+','')) * quant;
+                    //total price
+                    $("p.total-price").text('$' + prices.toFixed(2));
+                });
+            })
+        });
+    });
+</script>
 </body>
 </html>
