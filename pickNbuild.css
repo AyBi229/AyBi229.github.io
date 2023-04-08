@@ -109,3 +109,14 @@ div.dropdown-menu
     inline-size: 150px;
     overflow-wrap: break-word;
 }
+.animation {
+  position: relative;
+  animation-name: example;
+  animation-duration: 3s;  
+  animation-fill-mode: forwards;
+}
+
+@keyframes example {
+  from {top: 0px;}
+  to {top: 100px;}
+}
