@@ -117,6 +117,14 @@ div.dropdown-menu
 }
 
 @keyframes example {
-  from {top: 0px;}
-  to {top: 100px;}
+  from {top: -50px;}
+  to {top: 50px;}
 }
+.dropdown-menu {
+    position: relative;
+    display: inline-block;
+    width: 100%; /* Set the width to 100% */
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
+  }
+  
