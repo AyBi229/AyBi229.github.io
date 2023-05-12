@@ -119,19 +119,23 @@
             </ul>
         </div>
     </nav>
-    <div class="special-white">
-        <div class="container">
-            <div class="diplay-flex py-2 row">
-                <div class="row my-2">
-                    <div class="col-sm-4 card">
-                        <div class="card-body">
-                            <h4 class="card-title text-center">Product 1</h4>
-                            <p class="card-text">product name</p>
-                            <p class="card-text text-success">$$$</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="container mt-5">
+        <h4 class="text-center"><i class="bi bi-cart-fill"></i> MY CART</h4>
+        <table class="table table-striped text-center">
+          <thead>
+            <tr>
+              <th>ITEM</th>
+              <th>PRICE</th>
+              <th>QUANTITY</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+        <div class="text-center mb-3">
+          <h4>Total :</h4>
+          <p class="total-price text-success"></p>
+            <button id="getTotalPrice" class="btn btn-success">Get Total Price</button>
         </div>
     </div>
     <!-- Footer -->
