@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aya Birouti — Full-Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F7F5;
+    --bg-elev:#FFFFFF;
+    --ink:#14171F;
+    --ink-soft:#52565F;
+    --muted:#8A8F99;
+    --accent:#4C5FD5;
+    --accent-2:#12A594;
+    --border:#E4E4E1;
+    --shadow: 0 1px 2px rgba(20,23,31,0.04);
+    --radius: 10px;
+  }
+  html[data-theme="dark"]{
+    --bg:#0D0F14;
+    --bg-elev:#161922;
+    --ink:#EDEEF2;
+    --ink-soft:#B7BAC4;
+    --muted:#6B7280;
+    --accent:#7C8CF0;
+    --accent-2:#2DD4BF;
+    --border:#262A35;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    transition:background .25s ease, color .25s ease;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif; margin:0;}
+  code,.mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;}
+  ::selection{background:var(--accent); color:#fff;}
+
+  /* ---- Top bar: editor tabs ---- */
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    background:var(--bg-elev);
+    border-bottom:1px solid var(--border);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 20px;
+    height:52px;
+  }
+  .window-dots{display:flex; gap:6px; margin-right:18px; flex-shrink:0;}
+  .window-dots span{width:10px; height:10px; border-radius:50%; display:block;}
+  .window-dots span:nth-child(1){background:#EF6666;}
+  .window-dots span:nth-child(2){background:#F0B429;}
+  .window-dots span:nth-child(3){background:#12A594;}
+  .tabs{display:flex; gap:2px; overflow-x:auto; flex:1;}
+  .tabs::-webkit-scrollbar{display:none;}
+  .tab-btn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    background:transparent;
+    border:none;
+    color:var(--muted);
+    padding:8px 14px;
+    cursor:pointer;
+    border-bottom:2px solid transparent;
+    white-space:nowrap;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .tab-btn:hover{color:var(--ink);}
+  .tab-btn.active{color:var(--ink); border-bottom-color:var(--accent);}
+  .tab-btn:focus-visible, .icon-btn:focus-visible, .stamp-link:focus-visible, .term-line:focus-visible{
+    outline:2px solid var(--accent); outline-offset:2px;
+  }
+  .controls{display:flex; gap:8px; align-items:center; flex-shrink:0; margin-left:12px;}
+  .icon-btn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    background:var(--bg);
+    border:1px solid var(--border);
+    color:var(--ink-soft);
+    border-radius:6px;
+    padding:6px 10px;
+    cursor:pointer;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .icon-btn:hover{color:var(--ink); border-color:var(--accent);}
+
+  section{max-width:860px; margin:0 auto; padding:90px 24px;}
+  section#home{padding-top:70px;}
+
+  /* ---- Hero ---- */
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    color:var(--accent);
+    margin-bottom:14px;
+    display:block;
+  }
+  .hero h1{font-size:clamp(2.4rem, 6vw, 3.6rem); font-weight:700; letter-spacing:-0.02em; line-height:1.05;}
+  .hero .role{font-family:'JetBrains Mono',monospace; color:var(--muted); font-size:15px; margin-top:10px; display:block;}
+  .status-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:20px;
+    padding:6px 12px 6px 10px;
+    border:1px solid var(--border);
+    background:var(--bg-elev);
+    border-radius:20px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+  .status-dot{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--accent-2);
+    box-shadow:0 0 0 3px color-mix(in srgb, var(--accent-2) 25%, transparent);
+    flex-shrink:0;
+  }
+  .terminal{
+    margin-top:36px;
+    background:var(--bg-elev);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:20px 22px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:14.5px;
+    line-height:1.7;
+    box-shadow:var(--shadow);
+  }
+  .term-prompt{color:var(--accent-2);}
+  .term-prompt::before{content:"$ ";}
+  #typedBio{color:var(--ink-soft);}
+  .cursor{display:inline-block; width:8px; height:16px; background:var(--accent); vertical-align:middle; margin-left:2px; animation:blink 1s step-end infinite;}
+  @keyframes blink{50%{opacity:0;}}
+
+  .tagstrip{margin-top:30px; display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    border:1px solid var(--border);
+    background:var(--bg-elev);
+    padding:5px 10px;
+    border-radius:6px;
+  }
+
+  /* ---- Section headers ---- */
+  .section-head{display:flex; align-items:baseline; gap:10px; margin-bottom:36px;}
+  .section-head .filename{font-family:'JetBrains Mono',monospace; color:var(--muted); font-size:13px;}
+  .section-head h2{font-size:1.6rem;}
+
+  /* ---- Projects ---- */
+  .projects-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media (max-width:640px){.projects-grid{grid-template-columns:1fr;}}
+  .card{
+    background:var(--bg-elev);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:20px;
+    box-shadow:var(--shadow);
+    transition:transform .18s ease, border-color .18s ease;
+  }
+  .card:hover{transform:translateY(-3px); border-color:var(--accent);}
+  .card .fname{font-family:'JetBrains Mono',monospace; font-size:13.5px; color:var(--ink);}
+  .card .fname .ext{color:var(--accent-2);}
+  .card p{color:var(--ink-soft); font-size:14px; line-height:1.55; margin:10px 0 14px;}
+  .card .card-tags{display:flex; flex-wrap:wrap; gap:6px;}
+  .card .card-tags span{
+    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted);
+    border:1px solid var(--border); padding:2px 7px; border-radius:5px;
+  }
+
+  /* ---- Stack / JSON block ---- */
+  .json-block{
+    background:var(--bg-elev);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:24px 26px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:14px;
+    line-height:1.85;
+    box-shadow:var(--shadow);
+    overflow-x:auto;
+  }
+  .json-key{color:var(--accent);}
+  .json-str{color:var(--accent-2);}
+  .json-punc{color:var(--muted);}
+
+  /* ---- Contact / shell ---- */
+  .shell{
+    background:var(--bg-elev);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:22px 24px;
+    box-shadow:var(--shadow);
+  }
+  .term-line{
+    display:flex; gap:12px; align-items:center;
+    font-family:'JetBrains Mono',monospace; font-size:14.5px;
+    padding:10px 4px;
+    border-bottom:1px solid var(--border);
+    text-decoration:none;
+    color:var(--ink);
+    transition:color .15s ease, padding-left .15s ease;
+  }
+  .term-line:last-child{border-bottom:none;}
+  .term-line:hover{color:var(--accent); padding-left:8px;}
+  .term-line .cmd{color:var(--accent-2); min-width:90px;}
+  .term-line .val{color:var(--ink-soft);}
+  .term-line:hover .val{color:var(--accent);}
+
+  footer{
+    text-align:center;
+    padding:40px 24px 60px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    color:var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="display:flex; align-items:center; overflow:hidden;">
+    <div class="window-dots"><span></span><span></span><span></span></div>
+    <div class="tabs" id="tabs">
+      <button class="tab-btn active" data-target="home">home.tsx</button>
+      <button class="tab-btn" data-target="projects">projects.tsx</button>
+      <button class="tab-btn" data-target="stack">stack.json</button>
+      <button class="tab-btn" data-target="contact">contact.sh</button>
+    </div>
+  </div>
+  <div class="controls">
+    <button class="icon-btn" id="langToggle" aria-label="Switch language">FR</button>
+    <button class="icon-btn" id="themeToggle" aria-label="Switch theme">🌙</button>
+  </div>
+</div>
+
+<section id="home">
+  <div class="hero">
+    <span class="eyebrow" data-i18n="eyebrow">// portfolio</span>
+    <h1>Aya Birouti</h1>
+    <span class="role" data-i18n="role">Full-Stack Developer</span>
+
+    <div class="status-badge">
+      <span class="status-dot"></span>
+      <span data-i18n="status">Available for freelance & contract work</span>
+    </div>
+
+    <div class="terminal">
+      <span class="term-prompt">whoami</span><br>
+      <span id="typedBio"></span><span class="cursor"></span>
+    </div>
+
+    <div class="tagstrip">
+      <span class="tag">react</span><span class="tag">next.js</span><span class="tag">nest.js</span>
+      <span class="tag">angular</span><span class="tag">spring boot</span><span class="tag">jee</span>
+      <span class="tag">laravel</span><span class="tag">mongodb</span><span class="tag">mysql</span>
+      <span class="tag">mariadb</span><span class="tag">sql server</span><span class="tag">sqlite</span>
+      <span class="tag">postgresql</span><span class="tag">odoo</span>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-head">
+    <span class="filename">02 —</span>
+    <h2 data-i18n="projectsTitle">Projects</h2>
+  </div>
+  <div class="projects-grid">
+
+    <div class="card">
+      <div class="fname">company-ecommerce<span class="ext">.laravel</span></div>
+      <p data-i18n="p1">Built and maintained a company's online store, from product catalog to checkout.</p>
+      <div class="card-tags"><span>Laravel</span><span>MySQL</span></div>
+    </div>
+
+    <div class="card">
+      <div class="fname">shop<span class="ext">.next</span></div>
+      <p data-i18n="p2">An independent online store built to explore a full commerce stack end to end.</p>
+      <div class="card-tags"><span>Next.js</span><span>MongoDB</span></div>
+    </div>
+
+    <div class="card">
+      <div class="fname">todo<span class="ext">.tsx</span></div>
+      <p data-i18n="p3">A task manager for organizing daily to-dos, built for speed and simplicity.</p>
+      <div class="card-tags"><span>React</span><span>SQLite</span></div>
+    </div>
+
+    <div class="card">
+      <div class="fname">habitup<span class="ext">.ng</span></div>
+      <p data-i18n="p4">A habit and goal tracker that helps people build better daily routines.</p>
+      <div class="card-tags"><span>Angular</span><span>Spring Boot</span></div>
+    </div>
+
+    <div class="card">
+      <div class="fname">timetable-pro<span class="ext">.jee</span></div>
+      <p data-i18n="p5">A professional scheduling tool for building and managing school timetables.</p>
+      <div class="card-tags"><span>JEE</span><span>SQL Server</span></div>
+    </div>
+
+    <div class="card">
+      <div class="fname">weather-widget<span class="ext">.kt</span></div>
+      <p data-i18n="p6">A lightweight, fun weather gadget built for Android home screens.</p>
+      <div class="card-tags"><span>Android</span><span>PostgreSQL</span></div>
+    </div>
+
+  </div>
+</section>
+
+<section id="stack">
+  <div class="section-head">
+    <span class="filename">03 —</span>
+    <h2 data-i18n="stackTitle">Stack</h2>
+  </div>
+  <div class="json-block">
+<span class="json-punc">{</span><br>
+&nbsp;&nbsp;<span class="json-key">"frontend"</span><span class="json-punc">:</span> [<span class="json-str">"react"</span>, <span class="json-str">"next.js"</span>, <span class="json-str">"angular"</span>]<span class="json-punc">,</span><br>
+&nbsp;&nbsp;<span class="json-key">"backend"</span><span class="json-punc">:</span> [<span class="json-str">"nest.js"</span>, <span class="json-str">"spring boot"</span>, <span class="json-str">"jee"</span>, <span class="json-str">"laravel"</span>]<span class="json-punc">,</span><br>
+&nbsp;&nbsp;<span class="json-key">"database"</span><span class="json-punc">:</span> [<span class="json-str">"mongodb"</span>, <span class="json-str">"mysql"</span>, <span class="json-str">"mariadb"</span>, <span class="json-str">"sqlserver"</span>, <span class="json-str">"sqlite"</span>, <span class="json-str">"postgresql"</span>]<span class="json-punc">,</span><br>
+&nbsp;&nbsp;<span class="json-key">"erp"</span><span class="json-punc">:</span> [<span class="json-str">"odoo"</span>]<br>
+<span class="json-punc">}</span>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-head">
+    <span class="filename">04 —</span>
+    <h2 data-i18n="contactTitle">Contact</h2>
+  </div>
+  <p style="color:var(--ink-soft); margin:-20px 0 22px; font-size:14.5px;" data-i18n="contactIntro">Open to freelance and contract work — full-stack builds, ERP/Odoo integrations, and everything in between. Reach out below.</p>
+  <div class="shell">
+    <a class="term-line" href="mailto:biroutiaya@gmail.com"><span class="cmd">$ email</span><span class="val">biroutiaya@gmail.com</span></a>
+    <a class="term-line" href="https://github.com/AyBi229" target="_blank" rel="noopener"><span class="cmd">$ github</span><span class="val">github.com/AyBi229</span></a>
+    <a class="term-line" href="https://gitlab.com/AyBi229" target="_blank" rel="noopener"><span class="cmd">$ gitlab</span><span class="val">gitlab.com/AyBi229</span></a>
+    <a class="term-line" href="https://www.linkedin.com/in/aya-birouti-895303269/" target="_blank" rel="noopener"><span class="cmd">$ linkedin</span><span class="val">linkedin.com/in/aya-birouti</span></a>
+    <a class="term-line" href="https://x.com/Ayoosh_aybi" target="_blank" rel="noopener"><span class="cmd">$ x</span><span class="val">x.com/Ayoosh_aybi</span></a>
+  </div>
+</section>
+
+<footer>
+  <span data-i18n="footer">© 2026 Aya Birouti — built with care.</span>
+</footer>
+
+<script>
+  // ---------- Translations ----------
+  const translations = {
+    en: {
+      eyebrow: "// portfolio",
+      role: "Full-Stack Developer",
+      status: "Available for freelance & contract work",
+      bio: "Full-stack developer comfortable moving between ecosystems — React and Angular on the front end, Nest.js, Spring Boot, JEE and Laravel on the back, and databases from MySQL to MongoDB to Odoo.",
+      projectsTitle: "Projects",
+      stackTitle: "Stack",
+      contactTitle: "Contact",
+      contactIntro: "Open to freelance and contract work — full-stack builds, ERP/Odoo integrations, and everything in between. Reach out below.",
+      p1: "Built and maintained a company's online store, from product catalog to checkout.",
+      p2: "An independent online store built to explore a full commerce stack end to end.",
+      p3: "A task manager for organizing daily to-dos, built for speed and simplicity.",
+      p4: "A habit and goal tracker that helps people build better daily routines.",
+      p5: "A professional scheduling tool for building and managing school timetables.",
+      p6: "A lightweight, fun weather gadget built for Android home screens.",
+      footer: "© 2026 Aya Birouti — built with care."
+    },
+    fr: {
+      eyebrow: "// portfolio",
+      role: "Développeuse Full-Stack",
+      status: "Disponible pour des missions freelance",
+      bio: "Développeuse full-stack à l'aise entre plusieurs écosystèmes — React et Angular côté front, Nest.js, Spring Boot, JEE et Laravel côté back, et des bases de données de MySQL à MongoDB en passant par Odoo.",
+      projectsTitle: "Projets",
+      stackTitle: "Stack",
+      contactTitle: "Contact",
+      contactIntro: "Disponible pour des missions freelance — développement full-stack, intégrations ERP/Odoo, et bien plus. Contactez-moi ci-dessous.",
+      p1: "Conception et maintenance de la boutique en ligne d'une entreprise, du catalogue au paiement.",
+      p2: "Une boutique en ligne indépendante pour explorer une stack e-commerce complète.",
+      p3: "Un gestionnaire de tâches pour organiser le quotidien, pensé pour la rapidité et la simplicité.",
+      p4: "Un suivi d'habitudes et d'objectifs pour aider à construire de meilleures routines.",
+      p5: "Un outil professionnel pour créer et gérer les emplois du temps scolaires.",
+      p6: "Un gadget météo léger et ludique pour l'écran d'accueil Android.",
+      footer: "© 2026 Aya Birouti — conçu avec soin."
+    }
+  };
+
+  let currentLang = "en";
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let typingTimer = null;
+
+  function typeBio(text){
+    const el = document.getElementById('typedBio');
+    clearTimeout(typingTimer);
+    if(reduceMotion){ el.textContent = text; return; }
+    el.textContent = '';
+    let i = 0;
+    (function step(){
+      if(i <= text.length){
+        el.textContent = text.slice(0, i);
+        i++;
+        typingTimer = setTimeout(step, 14);
+      }
+    })();
+  }
+
+  function applyLang(lang){
+    currentLang = lang;
+    const dict = translations[lang];
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined && key !== 'bio'){
+        el.textContent = dict[key];
+      }
+    });
+    typeBio(dict.bio);
+    document.getElementById('langToggle').textContent = lang === 'en' ? 'FR' : 'EN';
+  }
+
+  document.getElementById('langToggle').addEventListener('click', () => {
+    applyLang(currentLang === 'en' ? 'fr' : 'en');
+  });
+
+  // ---------- Theme ----------
+  const themeBtn = document.getElementById('themeToggle');
+  function applyTheme(theme){
+    document.documentElement.setAttribute('data-theme', theme);
+    themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('aybi-theme', theme);
+  }
+  const savedTheme = localStorage.getItem('aybi-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+  themeBtn.addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme');
+    applyTheme(cur === 'dark' ? 'light' : 'dark');
+  });
+
+  // ---------- Tabs / scroll spy ----------
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.target);
+      target.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth'});
+    });
+  });
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        tabButtons.forEach(b => b.classList.toggle('active', b.dataset.target === entry.target.id));
+      }
+    });
+  }, {rootMargin: '-40% 0px -50% 0px'});
+  sections.forEach(s => observer.observe(s));
+
+  // ---------- Init ----------
+  applyLang('en');
+</script>
+
+</body>
+</html>
