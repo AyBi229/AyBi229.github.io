@@ -183,6 +183,23 @@
     border:1px solid var(--border); padding:2px 7px; border-radius:5px;
   }
 
+  .origin-tag{
+    display:inline-block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;
+    color:var(--accent);
+    background:color-mix(in srgb, var(--accent) 12%, transparent);
+    border-radius:5px;
+    padding:2px 7px;
+    margin:8px 0 0;
+  }
+
+  /* ---- Experience log ---- */
+  .log-entry{padding:16px 4px; border-bottom:1px solid var(--border);}
+  .log-entry:last-child{border-bottom:none;}
+  .log-head .fname{font-size:14px;}
+  .log-entry p{color:var(--ink-soft); font-size:14px; line-height:1.6; margin:8px 0 0;}
+
   /* ---- Stack / JSON block ---- */
   .json-block{
     background:var(--bg-elev);
@@ -239,6 +256,7 @@
     <div class="tabs" id="tabs">
       <button class="tab-btn active" data-target="home">home.tsx</button>
       <button class="tab-btn" data-target="projects">projects.tsx</button>
+      <button class="tab-btn" data-target="experience">experience.log</button>
       <button class="tab-btn" data-target="stack">stack.json</button>
       <button class="tab-btn" data-target="contact">contact.sh</button>
     </div>
@@ -271,6 +289,7 @@
       <span class="tag">laravel</span><span class="tag">mongodb</span><span class="tag">mysql</span>
       <span class="tag">mariadb</span><span class="tag">sql server</span><span class="tag">sqlite</span>
       <span class="tag">postgresql</span><span class="tag">odoo</span>
+      <span class="tag">wordpress</span><span class="tag">prisma</span>
     </div>
   </div>
 </section>
@@ -283,27 +302,27 @@
   <div class="projects-grid">
 
     <div class="card">
-      <div class="fname">company-ecommerce<span class="ext">.laravel</span></div>
-      <p data-i18n="p1">Built and maintained a company's online store, from product catalog to checkout.</p>
-      <div class="card-tags"><span>Laravel</span><span>MySQL</span></div>
+      <div class="fname">company-ecommerce<span class="ext">.wordpress</span></div>
+      <p data-i18n="p1">Built the company's WordPress storefront during a one-year internship at Teledyne, from product catalog to checkout.</p>
+      <div class="card-tags"><span>WordPress</span></div>
     </div>
 
     <div class="card">
-      <div class="fname">shop<span class="ext">.next</span></div>
-      <p data-i18n="p2">An independent online store built to explore a full commerce stack end to end.</p>
-      <div class="card-tags"><span>Next.js</span><span>MongoDB</span></div>
+      <div class="fname">denim-store<span class="ext">.wordpress</span></div>
+      <p data-i18n="p2">An independent WordPress store for jeans, built to explore a full commerce stack end to end.</p>
+      <div class="card-tags"><span>WordPress</span></div>
     </div>
 
     <div class="card">
-      <div class="fname">todo<span class="ext">.tsx</span></div>
-      <p data-i18n="p3">A task manager for organizing daily to-dos, built for speed and simplicity.</p>
-      <div class="card-tags"><span>React</span><span>SQLite</span></div>
+      <div class="fname">todo<span class="ext">.nest-ng</span></div>
+      <p data-i18n="p3">A task manager for organizing daily to-dos, built with Nest.js and Angular.</p>
+      <div class="card-tags"><span>Nest.js</span><span>Angular</span></div>
     </div>
 
     <div class="card">
-      <div class="fname">habitup<span class="ext">.ng</span></div>
-      <p data-i18n="p4">A habit and goal tracker that helps people build better daily routines.</p>
-      <div class="card-tags"><span>Angular</span><span>Spring Boot</span></div>
+      <div class="fname">habitup<span class="ext">.next</span></div>
+      <p data-i18n="p4">A habit and goal tracker built with Next.js and Prisma to help people build better daily routines.</p>
+      <div class="card-tags"><span>Next.js</span><span>Prisma</span></div>
     </div>
 
     <div class="card">
@@ -318,19 +337,44 @@
       <div class="card-tags"><span>Android</span><span>PostgreSQL</span></div>
     </div>
 
+    <div class="card">
+      <div class="fname">picknbuild<span class="ext">.js</span></div>
+      <span class="origin-tag" data-i18n="originTag">early 2023 · first project</span>
+      <p data-i18n="p7">Pick your PC parts and choose whether to build it yourself or have it built for you — one of the first things I ever shipped.</p>
+      <div class="card-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+    </div>
+
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-head">
+    <span class="filename">03 —</span>
+    <h2 data-i18n="expTitle">Experience</h2>
+  </div>
+  <div class="shell">
+    <div class="log-entry">
+      <div class="log-head"><span class="fname">tis-smarthome<span class="ext">.odoo</span></span></div>
+      <p data-i18n="exp1">First developer role, at TIS Smarthome Morocco. Implemented and maintained the company's Odoo CRM.</p>
+    </div>
+    <div class="log-entry">
+      <div class="log-head"><span class="fname">teledyne<span class="ext">.wordpress</span></span></div>
+      <p data-i18n="exp2">One-year internship at Teledyne. Built the company's WordPress ecommerce platform from the ground up.</p>
+    </div>
   </div>
 </section>
 
 <section id="stack">
   <div class="section-head">
-    <span class="filename">03 —</span>
+    <span class="filename">04 —</span>
     <h2 data-i18n="stackTitle">Stack</h2>
   </div>
   <div class="json-block">
 <span class="json-punc">{</span><br>
 &nbsp;&nbsp;<span class="json-key">"frontend"</span><span class="json-punc">:</span> [<span class="json-str">"react"</span>, <span class="json-str">"next.js"</span>, <span class="json-str">"angular"</span>]<span class="json-punc">,</span><br>
-&nbsp;&nbsp;<span class="json-key">"backend"</span><span class="json-punc">:</span> [<span class="json-str">"nest.js"</span>, <span class="json-str">"spring boot"</span>, <span class="json-str">"jee"</span>, <span class="json-str">"laravel"</span>]<span class="json-punc">,</span><br>
+&nbsp;&nbsp;<span class="json-key">"backend"</span><span class="json-punc">:</span> [<span class="json-str">"nest.js"</span>, <span class="json-str">"spring boot"</span>, <span class="json-str">"jee"</span>, <span class="json-str">"laravel"</span>, <span class="json-str">"prisma"</span>]<span class="json-punc">,</span><br>
 &nbsp;&nbsp;<span class="json-key">"database"</span><span class="json-punc">:</span> [<span class="json-str">"mongodb"</span>, <span class="json-str">"mysql"</span>, <span class="json-str">"mariadb"</span>, <span class="json-str">"sqlserver"</span>, <span class="json-str">"sqlite"</span>, <span class="json-str">"postgresql"</span>]<span class="json-punc">,</span><br>
+&nbsp;&nbsp;<span class="json-key">"cms"</span><span class="json-punc">:</span> [<span class="json-str">"wordpress"</span>]<span class="json-punc">,</span><br>
 &nbsp;&nbsp;<span class="json-key">"erp"</span><span class="json-punc">:</span> [<span class="json-str">"odoo"</span>]<br>
 <span class="json-punc">}</span>
   </div>
@@ -338,7 +382,7 @@
 
 <section id="contact">
   <div class="section-head">
-    <span class="filename">04 —</span>
+    <span class="filename">05 —</span>
     <h2 data-i18n="contactTitle">Contact</h2>
   </div>
   <p style="color:var(--ink-soft); margin:-20px 0 22px; font-size:14.5px;" data-i18n="contactIntro">Open to freelance and contract work — full-stack builds, ERP/Odoo integrations, and everything in between. Reach out below.</p>
@@ -364,15 +408,20 @@
       status: "Available for freelance & contract work",
       bio: "Full-stack developer comfortable moving between ecosystems — React and Angular on the front end, Nest.js, Spring Boot, JEE and Laravel on the back, and databases from MySQL to MongoDB to Odoo.",
       projectsTitle: "Projects",
+      expTitle: "Experience",
       stackTitle: "Stack",
       contactTitle: "Contact",
       contactIntro: "Open to freelance and contract work — full-stack builds, ERP/Odoo integrations, and everything in between. Reach out below.",
-      p1: "Built and maintained a company's online store, from product catalog to checkout.",
-      p2: "An independent online store built to explore a full commerce stack end to end.",
-      p3: "A task manager for organizing daily to-dos, built for speed and simplicity.",
-      p4: "A habit and goal tracker that helps people build better daily routines.",
+      originTag: "early 2023 · first project",
+      p1: "Built the company's WordPress storefront during a one-year internship at Teledyne, from product catalog to checkout.",
+      p2: "An independent WordPress store for jeans, built to explore a full commerce stack end to end.",
+      p3: "A task manager for organizing daily to-dos, built with Nest.js and Angular.",
+      p4: "A habit and goal tracker built with Next.js and Prisma to help people build better daily routines.",
       p5: "A professional scheduling tool for building and managing school timetables.",
       p6: "A lightweight, fun weather gadget built for Android home screens.",
+      p7: "Pick your PC parts and choose whether to build it yourself or have it built for you — one of the first things I ever shipped.",
+      exp1: "First developer role, at TIS Smarthome Morocco. Implemented and maintained the company's Odoo CRM.",
+      exp2: "One-year internship at Teledyne. Built the company's WordPress ecommerce platform from the ground up.",
       footer: "© 2026 Aya Birouti — built with care."
     },
     fr: {
@@ -381,15 +430,20 @@
       status: "Disponible pour des missions freelance",
       bio: "Développeuse full-stack à l'aise entre plusieurs écosystèmes — React et Angular côté front, Nest.js, Spring Boot, JEE et Laravel côté back, et des bases de données de MySQL à MongoDB en passant par Odoo.",
       projectsTitle: "Projets",
+      expTitle: "Expérience",
       stackTitle: "Stack",
       contactTitle: "Contact",
       contactIntro: "Disponible pour des missions freelance — développement full-stack, intégrations ERP/Odoo, et bien plus. Contactez-moi ci-dessous.",
-      p1: "Conception et maintenance de la boutique en ligne d'une entreprise, du catalogue au paiement.",
-      p2: "Une boutique en ligne indépendante pour explorer une stack e-commerce complète.",
-      p3: "Un gestionnaire de tâches pour organiser le quotidien, pensé pour la rapidité et la simplicité.",
-      p4: "Un suivi d'habitudes et d'objectifs pour aider à construire de meilleures routines.",
+      originTag: "début 2023 · premier projet",
+      p1: "Développement de la boutique WordPress de l'entreprise pendant un stage d'un an chez Teledyne, du catalogue au paiement.",
+      p2: "Une boutique WordPress indépendante dédiée au jean, pour explorer une stack e-commerce complète.",
+      p3: "Un gestionnaire de tâches pour organiser le quotidien, développé avec Nest.js et Angular.",
+      p4: "Un suivi d'habitudes et d'objectifs développé avec Next.js et Prisma pour aider à construire de meilleures routines.",
       p5: "Un outil professionnel pour créer et gérer les emplois du temps scolaires.",
       p6: "Un gadget météo léger et ludique pour l'écran d'accueil Android.",
+      p7: "Personnalisez votre configuration PC et choisissez si vous l'assemblez vous-même ou si on s'en charge — l'un des tout premiers projets que j'ai livrés.",
+      exp1: "Premier poste de développeuse, chez TIS Smarthome Morocco. Mise en place et maintenance du CRM Odoo de l'entreprise.",
+      exp2: "Stage d'un an chez Teledyne. Développement de la plateforme e-commerce WordPress de l'entreprise, de A à Z.",
       footer: "© 2026 Aya Birouti — conçu avec soin."
     }
   };
